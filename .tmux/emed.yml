@@ -1,0 +1,5 @@
+session_name: emed
+start_directory: ~/work/emed
+windows:
+  - window_name: root
+    focus: true

@@ -1,0 +1,5 @@
+session_name: pet
+start_directory: ~/work/mundo-do-pet
+windows:
+  - window_name: root
+    focus: true

@@ -1,0 +1,5 @@
+session_name: afas
+start_directory: ~/work/afas
+windows:
+  - window_name: root
+    focus: true
