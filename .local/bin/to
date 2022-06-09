@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+project=$1
+
+if [ $project = "help" ]; then
+    echo "Projects:"
+    echo "mw   => medoasis-web"
+    echo "mwa  => medoasis-web-admin"
+    echo "ma   => medoasis-api"
+    echo "pe   => phoenix-ecom-api"
+    echo "fs   => fulfillment-service"
+    echo "fca  => ftf-core-api"
+    echo "pw  => pet-web"
+    echo "pwa  => pet-web-admin"
+    echo "pa  => pet-api"
+fi
+
+if [ $project = "mw" ]; then
+    start_directory=~/work/emed/projects/medoasis-web
+    tmux neww -n web -c $start_directory; 
+    tmux splitw -c $start_directory -l 13;
+    tmux select-pane -t 0;
+fi
+
+if [ $project = "mwa" ]; then
+    start_directory=~/work/emed/projects/medoasis-web-admin
+    tmux neww -n web-admin -c $start_directory; 
+    tmux splitw -c $start_directory -l 13;
+    tmux select-pane -t 0;
+fi
+
+if [ $project = "ma" ]; then
+    start_directory=~/work/emed/projects/medoasis-api
+    tmux neww -n api -c $start_directory; 
+    tmux splitw -c "$start_directory/server" -l 13;
+    tmux splitw -h -c $start_directory;
+    tmux select-pane -t 0;
+fi
+
+if [ $project = "fs" ]; then
+    start_directory=~/work/emed/projects/fulfillment-service
+    tmux neww -n fulfillment -c $start_directory; 
+    tmux splitw -c $start_directory -l 13;
+    tmux select-pane -t 0;
+fi
+
+if [ $project = "pe" ]; then
+    start_directory=~/work/emed/projects/phoenix-ecom-api
+    tmux neww -n phoenix -c $start_directory; 
+    tmux splitw -c $start_directory -l 13;
+    tmux select-pane -t 0;
+fi
+
+if [ $project = "fca" ]; then
+    start_directory=~/work/emed/projects/ftf-core-api
+    tmux neww -n core-api -c $start_directory; 
+    tmux splitw -c $start_directory -l 13;
+    tmux select-pane -t 0;
+fi
+
+if [ $project = "pw" ]; then
+    start_directory=~/work/mundo-do-pet/projects/pet-web
+    tmux neww -n web -c $start_directory; 
+    tmux splitw -c $start_directory -l 13;
+    tmux select-pane -t 0;
+fi
+
+if [ $project = "pwa" ]; then
+    start_directory=~/work/mundo-do-pet/projects/pet-web-admin
+    tmux neww -n web-admin -c $start_directory; 
+    tmux splitw -c $start_directory -l 13;
+    tmux select-pane -t 0;
+fi
+
+if [ $project = "pa" ]; then
+    start_directory=~/work/mundo-do-pet/projects/pet-api
+    tmux neww -n api -c $start_directory; 
+    tmux splitw -c $start_directory -l 13;
+    tmux select-pane -t 0;
+fi
