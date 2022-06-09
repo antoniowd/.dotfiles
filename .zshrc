@@ -1,4 +1,4 @@
-export COINMARKETCAP_API_KEY="e07a7d4e-dc92-4bc0-93fe-78225d7ed014"
+source $HOME/.env
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
