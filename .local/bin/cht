@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+languages=`echo "javascript nodejs typescript golang reactjs bash html css" | tr ' ' '\n'`
+core_utils=`echo "xargs find mv sed awk curl tar rg cp man tldr tr ls grep ps mv kill lsof less head tail cp rm rename jq cat ssh git docker docker-compose chmod chown make" | tr ' ' '\n'`
+
+selected=`printf "$languages\n$core_utils" | fzf`
+read -p "query: " query
+
+if echo $languages | grep -w -q $selected; then
+  query=`echo $query | tr ' ' '+'`
+  tmux neww bash -c "echo \"curl cht.sh/$selected/$query/\" & curl cht.sh/$selected/$query & while [ : ]; do sleep 1; done"
+else
+  tmux neww bash -c "curl -s cht.sh/$selected~$query | less"
+fi
