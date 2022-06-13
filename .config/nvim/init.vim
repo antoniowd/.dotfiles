@@ -1,4 +1,18 @@
 syntax on
+
+set path+=**
+
+" Nice menu when typing `:find *.py`
+set wildmode=longest,list,full
+set wildmenu
+" Ignore files
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=**/coverage/*
+set wildignore+=**/node_modules/*
+set wildignore+=**/android/*
+set wildignore+=**/ios/*
+set wildignore+=**/.git/*
  
 set exrc
 set number
@@ -90,6 +104,11 @@ nnoremap <leader>wa :wa<CR>
 map <C-l> 20zl
 map <C-h> 20zh
 nnoremap <leader>s :source ~/.config/nvim/init.vim<CR>
+
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
+augroup END
 
 " Gruvbox
 " let g:gruvbox_contrast_dark = 'soft'
@@ -228,7 +247,7 @@ lua << EOF
 
   -- Use a loop to conveniently call 'setup' on multiple servers and
   -- map buffer local keybindings when the language server attaches
-  local servers = { 'tsserver', 'eslint', 'gopls' }
+  local servers = { 'tsserver', 'eslint', 'gopls', 'pyright' }
   -- Setup cmp autocompletion.
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   for _, lsp in pairs(servers) do
