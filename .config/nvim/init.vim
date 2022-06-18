@@ -2,9 +2,6 @@ syntax on
 
 set path+=**
 
-" Nice menu when typing `:find *.py`
-set wildmode=longest,list,full
-set wildmenu
 " Ignore files
 set wildignore+=*.pyc
 set wildignore+=*_build/*
@@ -90,6 +87,9 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
 
+" Formating and Linters
+Plug 'dense-analysis/ale'
+
 " Debugger
 " Plug 'mfussenegger/nvim-dap'
 
@@ -147,6 +147,18 @@ map <leader>r :Ranger<CR>
 " vim-fugitive
 nnoremap <leader>gs <cmd>Git<cr>
 nnoremap <leader>gm <cmd>MerginalToggle<cr>
+
+" ALE
+let js_fixers = ['prettier', 'eslint']
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': js_fixers,
+\   'typescript': js_fixers,
+\   'typescriptreact': js_fixers,
+\   'css': ['prettier'],
+\   'json': ['prettier'],
+\}
+let g:ale_fix_on_save = 1
 
 " Treeesitter
 lua << EOF
@@ -242,7 +254,7 @@ lua << EOF
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
     vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
     vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', bufopts)
-    vim.keymap.set('n', '<space>fa', vim.lsp.buf.format, bufopts)
+    vim.keymap.set('n', '<space>fa', '<cmd>ALEFix<cr>', bufopts)
   end
 
   -- Use a loop to conveniently call 'setup' on multiple servers and
