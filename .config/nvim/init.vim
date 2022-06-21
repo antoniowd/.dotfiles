@@ -10,7 +10,7 @@ set wildignore+=**/node_modules/*
 set wildignore+=**/android/*
 set wildignore+=**/ios/*
 set wildignore+=**/.git/*
- 
+
 set exrc
 set number
 set mouse=a
@@ -101,6 +101,7 @@ inoremap jj <Esc>
 cnoremap jj <C-C>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>wa :wa<CR>
+nnoremap Y y$
 map <C-l> 20zl
 map <C-h> 20zh
 nnoremap <leader>s :source ~/.config/nvim/init.vim<CR>
@@ -289,7 +290,7 @@ lua << EOF
     snippet = {
       -- REQUIRED - you must specify a snippet engine
       expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body) 
+        vim.fn["vsnip#anonymous"](args.body)
       end,
     },
     window = {
@@ -305,7 +306,7 @@ lua << EOF
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
-      { name = 'vsnip' }, 
+      { name = 'vsnip' },
     }, {
       { name = 'buffer' },
     })
