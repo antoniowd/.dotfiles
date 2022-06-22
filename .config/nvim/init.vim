@@ -45,6 +45,8 @@ set colorcolumn=80
 set foldlevel=20
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
+set wrap
+set linebreak
 
 call plug#begin('~/.vim/plugged')
 " Themes
