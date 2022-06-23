@@ -48,6 +48,9 @@ set foldexpr=nvim_treesitter#foldexpr()
 set wrap
 set linebreak
 
+" let g:loaded_node_provider = 0
+let g:ale_disable_lsp = 1
+
 call plug#begin('~/.vim/plugged')
 " Themes
 Plug 'morhetz/gruvbox'
