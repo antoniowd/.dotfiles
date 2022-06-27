@@ -110,6 +110,10 @@ nnoremap Y y$
 map <C-l> 20zl
 map <C-h> 20zh
 nnoremap <leader>s :source ~/.config/nvim/init.vim<CR>
+" yank all the buffer
+nnoremap <leader>y gg"+yG<C-o>
+" select the entire buffer
+nnoremap <leader>v ggVG
 
 augroup highlight_yank
     autocmd!
