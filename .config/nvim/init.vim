@@ -114,6 +114,11 @@ nnoremap <leader>s :source ~/.config/nvim/init.vim<CR>
 nnoremap <leader>y gg"+yG<C-o>
 " select the entire buffer
 nnoremap <leader>v ggVG
+nnoremap <silent> <C-f> :silent !tmux neww tmux-sessionizer<CR>
+nnoremap <C-Right> :vertical resize +5<CR>
+nnoremap <C-Left> :vertical resize -5<CR>
+nnoremap <C-Down> :resize -5<CR>
+nnoremap <C-Up> :resize +5<CR>
 
 augroup highlight_yank
     autocmd!
