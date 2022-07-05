@@ -47,6 +47,7 @@ set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 set wrap
 set linebreak
+set updatetime=100
 
 " let g:loaded_node_provider = 0
 let g:ale_disable_lsp = 1
@@ -62,6 +63,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'idanarye/vim-merginal'
+Plug 'airblade/vim-gitgutter'
 
 " Utils
 Plug 'tpope/vim-surround'
