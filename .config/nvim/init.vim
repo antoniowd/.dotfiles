@@ -76,6 +76,9 @@ Plug 'BurntSushi/ripgrep'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
+" API REST client
+Plug 'NTBBloodbath/rest.nvim'
+
 " File explorer
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
@@ -175,6 +178,8 @@ let g:ale_fixers = {
 \}
 let g:ale_fix_on_save = 1
 
+
+
 " Treeesitter
 lua << EOF
   require'nvim-treesitter.configs'.setup {
@@ -205,6 +210,37 @@ lua << EOF
       additional_vim_regex_highlighting = false,
     },
   }
+EOF
+
+" rest.nvim
+lua << EOF
+require'rest-nvim'.setup {
+      -- Open request results in a horizontal split
+      result_split_horizontal = false,
+      -- Keep the http file buffer above|left when split horizontal|vertical
+      result_split_in_place = true,
+      -- Skip SSL verification, useful for unknown certificates
+      skip_ssl_verification = false,
+      -- Highlight request on run
+      highlight = {
+        enabled = true,
+        timeout = 150,
+      },
+      result = {
+        -- toggle showing URL, HTTP info, headers at top the of result window
+        show_url = true,
+        show_http_info = true,
+        show_headers = true,
+      },
+      -- Jump to request line on run
+      jump_to_request = true,
+      env_file = '.env',
+      custom_dynamic_variables = {},
+      yank_dry_run = true,
+    }
+
+    vim.api.nvim_set_keymap('n', '<Leader>ar', [[<cmd>lua require'rest-nvim'.run()<cr>]], {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', '<Leader>al', [[<cmd>lua require'rest-nvim'.last()<cr>]], {noremap = true, silent = true})
 EOF
 
 " Telescope
