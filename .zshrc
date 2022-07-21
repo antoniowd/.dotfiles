@@ -104,7 +104,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-alias aws-sso-magic='docker run --rm -it -v ~/.aws:~/.aws -v ~/.aws-sso-magic:~/.aws-sso-magic -v ~/.kube:/root/.kube javiortizmol/aws_sso_magic aws-sso-magic'
+alias aws-sso-magic='docker run --rm -it -v ~/.aws:/root/.aws -v ~/.aws-sso-magic:/root/.aws-sso-magic -v ~/.kube:/root/.kube javiortizmol/aws_sso_magic aws-sso-magic'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
